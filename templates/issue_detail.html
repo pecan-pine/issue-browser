@@ -16,7 +16,7 @@ Details for issue #{{ issue.number }}
     <div class="user_information_item"> wrote on {{ issue.created_at | format_time }}: </div>
 </div>
 
-<div id="issue_body">{{ issue.body|urlize }}</div>
+<div id="issue_body">{{ issue.body|urlize|markdown }}</div>
 <br> 
 {% for comment in comments %}
 <div id="user_information">
@@ -25,7 +25,7 @@ Details for issue #{{ issue.number }}
     <div class="user_information_item"> wrote on {{ comment.created_at | format_time }}: </div>
 </div>
 
-<div id="issue_body">{{ comment.body|markdown }}</div>
+<div id="issue_body">{{ comment.body|urlize|markdown }}</div>
 <br>
 {% endfor %}
 {% if issue.closed_at %}{{ issue.closed_at }}{% endif %}
