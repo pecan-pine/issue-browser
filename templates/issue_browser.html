@@ -7,7 +7,6 @@ Current Issues
 {% block main %}
 Here are the current issues: 
 {{ pagination.info }}
-{{ pagination.links }}
 <br>
 <table>
     <thead>
@@ -23,8 +22,10 @@ Here are the current issues:
     <td><a href="{{ url_for('issue_detail', id=issue.id) }}">{{ issue.title }}</a></td>
 </tr>
 {% endfor %}
-</table>
 </tbody>
+</table>
+<br>
+{{ pagination.links }}
 
 <!-- {% for issue in issues %}
 <br>

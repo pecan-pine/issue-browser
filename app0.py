@@ -2,22 +2,27 @@ from flask import Flask, request, Response, redirect, render_template
 import os
 import requests
 from flask_paginate import Pagination, get_page_parameter, get_page_args
+import issues
 
 app = Flask(__name__)
 
 # auto-reload templates
 app.config["TEMPLATES_AUTO_RELOAD"] = True
 
-r = requests.get("https://api.github.com/repos/walmartlabs/thorax/issues")
-issues = r.json()
+# get issue data and format as json / dict
+# issues_data = requests.get("https://api.github.com/repos/walmartlabs/thorax/issues")
+# issues = issues_data.json()
+issues = issues.issues
+
 def get_issues(offset=0, per_page=10):
     return issues[offset: offset + per_page]
 
 @app.route('/', methods=['POST', 'GET'])
 def main_page():
-    r = requests.get("https://api.github.com/repos/walmartlabs/thorax/issues")
-    issues = r.json()
-    titles = [issue["title"] for issue in issues]
+    # r = requests.get("https://api.github.com/repos/walmartlabs/thorax/issues")
+    # issues = r.json()
+    print(issues)
+    # titles = [issue["title"] for issue in issues]
     page = request.args.get(get_page_parameter(), type=int, default=1)
     pagination = Pagination(page=page, per_page=10, total=len(issues), record_name="issues", css_framework="bootstrap4")
 
