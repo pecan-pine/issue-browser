@@ -39,6 +39,8 @@
   border-radius: 5px;
   padding: 20px;
   background-color: beige; 
+  font-size: 11pt;
+  text-align: left;
 }
 
 #issue_title {
