@@ -5,15 +5,17 @@ Details for issue #{{ issue.number }}
 {% endblock %}
 
 {% block main %}
-<h2>
+<h2 id="issue_title">
     {{ issue.title }}
     <span style="color:gray">#{{ issue.number }}</span>
     <span style="padding: 5px; border-radius: 25%; background-color:{% if issue.state == 'open' %}yellow{% else %}green{% endif %}">{{ issue.state }}</span>
 </h2>
-{% if issue.user.avatar_url %}<div class="crop"><img class="avatar" src="{{ issue.user.avatar_url }}"/></div>{% endif %}
-{{ issue.user.login }}
+<div id="user_information">
+    {% if issue.user.avatar_url %}<div class="crop"><img class="avatar" src="{{ issue.user.avatar_url }}"/></div>{% endif %}
+    <div id="user_login">{{ issue.user.login }}</div>
+</div>
 
-<div>{{ issue.body }}</div>
+<div id="issue_body">{{ issue.body }}</div>
 <br> 
 Created at: {{ issue.created_at }}
 {% if issue.closed_at %}{{ issue.closed_at }}{% endif %}
