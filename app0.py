@@ -10,9 +10,11 @@ app = Flask(__name__)
 app.config["TEMPLATES_AUTO_RELOAD"] = True
 
 # get issue data and format as json / dict
-# issues_data = requests.get("https://api.github.com/repos/walmartlabs/thorax/issues")
-# issues = issues_data.json()
-issues = issues.issues
+issues_data = requests.get("https://api.github.com/repos/walmartlabs/thorax/issues")
+issues = issues_data.json()
+
+# # get issues from local python list
+# issues = issues.issues
 
 def get_issues(offset=0, per_page=10):
     return issues[offset: offset + per_page]
@@ -45,4 +47,7 @@ def issue_detail():
     # isolate the issue by looking it up by id in the list
     issue = [issue for issue in issues if int(issue["id"]) == int(issue_id)][0]
 
-    return render_template("issue_detail.html", issue=issue)
+    # get issue comments
+    comments = requests.get(issue["comments_url"]).json()
+
+    return render_template("issue_detail.html", issue=issue, comments=comments)
