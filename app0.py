@@ -33,7 +33,6 @@ def main_page():
     # get the current page number, issues per page, and current offset
     # pylint: disable=unbalanced-tuple-unpacking
     page, per_page, offset = get_page_args(page_parameter='page', per_page_parameter='per_page', offset="offset")
-    print(page, " ", per_page, " ", offset)
 
     # get a the current page's list of issues
     pagination_issues = get_issues(offset=offset, per_page=per_page)
