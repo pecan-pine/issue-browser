@@ -26,6 +26,7 @@ Details for issue #{{ issue.number }}
 </div>
 
 <div id="issue_body">{{ comment.body|markdown }}</div>
+<br>
 {% endfor %}
 {% if issue.closed_at %}{{ issue.closed_at }}{% endif %}
 
