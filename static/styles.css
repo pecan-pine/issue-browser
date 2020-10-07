@@ -10,6 +10,7 @@
 #user_login {
   position: relative;
   bottom: 15px;
+  font-weight: bold;
 }
 
 .user_information_item {
