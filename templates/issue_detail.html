@@ -23,7 +23,9 @@ Details for issue #{{ issue.number }}
 {% for comment in comments %}
 <div id="user_information">
     {% if comment.user.avatar_url %}<div class="crop"><img class="avatar" src="{{ comment.user.avatar_url }}"/></div>{% endif %}
-    <div class="user_information_item" id="user_login">{{ comment.user.login }}</div>
+    <div class="user_information_item" id="user_login">
+        <a href="{{ comment.user.html_url }}">{{ comment.user.login }}</a>
+    </div>
     <div class="user_information_item"> wrote on {{ comment.created_at | format_time }}: </div>
 </div>
 
