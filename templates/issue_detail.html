@@ -16,7 +16,7 @@ Details for issue #{{ issue.number }}
     <div class="user_information_item"> wrote on {{ issue.created_at | format_time }}: </div>
 </div>
 
-<div id="issue_body">{{ issue.body }}</div>
+<div id="issue_body">{{ issue.body|urlize }}</div>
 <br> 
 {% for comment in comments %}
 <div id="user_information">
