@@ -2,6 +2,7 @@ from flask import Flask, request, Response, redirect, render_template
 from flask_paginate import Pagination, get_page_args
 import requests
 import issues
+import datetime
 
 app = Flask(__name__)
 
@@ -15,6 +16,11 @@ issues = issues.issues
 
 def get_issues(offset=0, per_page=10):
     return issues[offset: offset + per_page]
+
+@app.template_filter()
+def format_time(value):
+    time = datetime.datetime.strptime(value, '%Y-%m-%dT%H:%M:%SZ').strftime("%b %d %Y")
+    return time
 
 @app.route('/', methods=['POST', 'GET'])
 def main_page():

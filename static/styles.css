@@ -5,7 +5,13 @@
   width: auto;
 }
 
+/* user information css */
 #user_login {
+  position: relative;
+  bottom: 15px;
+}
+
+.user_information_item {
   display: inline-block;
   position: relative;
   bottom: 15px;
@@ -14,6 +20,17 @@
 #user_information {
   text-align: left;
 }
+
+.crop {
+  width: 50px;
+  height: 50px;
+  position: relative;
+  overflow: hidden;
+  border-radius: 50%;
+  display: inline-block;
+}
+
+/* end user information css */
 
 #issue_body {
   border: solid black 2px;
@@ -28,14 +45,6 @@
   padding: 10px;
 }
 
-.crop {
-  width: 50px;
-  height: 50px;
-  position: relative;
-  overflow: hidden;
-  border-radius: 50%;
-  display: inline-block;
-}
 /* TODO: add in a function that will change label text color
   depending on background color 
 */
