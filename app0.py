@@ -26,6 +26,7 @@ def main_page():
 
     # get a the current page's list of issues
     pagination_issues = get_issues(offset=offset, per_page=per_page)
+    # pylint: disable=unbalanced-tuple-unpacking
     pagination = Pagination(page=page, per_page=per_page, total=len(issues), css_framework="bootstrap4")
 
     return render_template("issue_browser.html", issues=pagination_issues, pagination=pagination)
