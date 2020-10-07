@@ -11,7 +11,8 @@ Here are the current issues:
 <br>
 {% for issue in issues %}
 <br>
-<div>{{ loop.index + pagination.skip }} <nbsp></nbsp> {{ issue.title }}</div>
+<div>{{ loop.index + pagination.skip }} <nbsp></nbsp> {{ issue.title }}{{ issue.id }}</div>
+<a href="{{ url_for('issue_detail', id=issue.id) }}">Issue Detail</a>
 {% endfor %}
 
 <!-- {% for issue in issues %}

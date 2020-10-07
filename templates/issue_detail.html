@@ -1,0 +1,14 @@
+{% extends "layout.html" %}
+
+{% block title %}
+Issue Details
+{% endblock %}
+
+{% block main %}
+{% if issue %}
+The issue is: 
+{{ issue.title }}
+{% else %}
+Issue not found.
+{% endif %}
+{% endblock %}
