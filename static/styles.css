@@ -1,3 +1,12 @@
+/* TODO: add in a function that will change label text color
+  depending on background color 
+*/
+.label {
+  padding: 3px;
+  border-radius: 5px;
+  font-weight: normal;
+}
+
 /* table formatting */
 html {
   font-family: sans-serif;

@@ -13,13 +13,19 @@ Here are the current issues:
         <tr>
             <th>Issue Number</th>
             <th>Issue Title</th>
+            <th>State</th>
         </tr>
     </thead>
     <tbody>
 {% for issue in issues %}
 <tr> 
     <td>{{ issue.number }}</td>
-    <td><a href="{{ url_for('issue_detail', id=issue.id) }}">{{ issue.title }}</a></td>
+    <td><a href="{{ url_for('issue_detail', id=issue.id) }}">{{ issue.title }}</a>
+        {% for label in issue.labels %}
+    <span class="label" style="background-color:#{{ label.color }}">{{ label.name }}</span>
+        {% endfor %}
+    </td>
+    <td>{{ issue.state }}</td>
 </tr>
 {% endfor %}
 </tbody>
