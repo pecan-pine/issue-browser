@@ -13,12 +13,11 @@ Details for issue #{{ issue.number }}
 <div id="user_information">
     {% if issue.user.avatar_url %}<div class="crop"><img class="avatar" src="{{ issue.user.avatar_url }}"/></div>{% endif %}
     <div class="user_information_item" id="user_login">{{ issue.user.login }}</div>
-    <div class="user_information_item">{{ issue.created_at | format_time }}</div>
+    <div class="user_information_item"> wrote on {{ issue.created_at | format_time }}: </div>
 </div>
 
 <div id="issue_body">{{ issue.body }}</div>
 <br> 
-Created at: {{ issue.created_at | format_time }}
 {% if issue.closed_at %}{{ issue.closed_at }}{% endif %}
 
 {% endblock %}
