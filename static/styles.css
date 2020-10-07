@@ -13,6 +13,14 @@
   font-weight: bold;
 }
 
+#user_login > a {
+  color: black;
+}
+
+#user_login > a:hover {
+  color: blue;
+}
+
 .user_information_item {
   display: inline-block;
   position: relative;
