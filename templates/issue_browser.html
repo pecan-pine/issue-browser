@@ -9,11 +9,22 @@ Here are the current issues:
 {{ pagination.info }}
 {{ pagination.links }}
 <br>
+<table>
+    <thead>
+        <tr>
+            <th>Issue Number</th>
+            <th>Issue Title</th>
+        </tr>
+    </thead>
+    <tbody>
 {% for issue in issues %}
-<br>
-<div>{{ loop.index + pagination.skip }} <nbsp></nbsp> {{ issue.title }}{{ issue.id }}</div>
-<a href="{{ url_for('issue_detail', id=issue.id) }}">Issue Detail</a>
+<tr> 
+    <td>{{ issue.number }}</td>
+    <td><a href="{{ url_for('issue_detail', id=issue.id) }}">{{ issue.title }}</a></td>
+</tr>
 {% endfor %}
+</table>
+</tbody>
 
 <!-- {% for issue in issues %}
 <br>
