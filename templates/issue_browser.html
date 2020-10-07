@@ -1,0 +1,22 @@
+{% extends "layout.html" %}
+
+{% block title %}
+Current Issues
+{% endblock %}
+
+{% block main %}
+Here are the current issues: 
+<br>
+{% for issue in issues %}
+<br>
+<div>{{ issue.title }}</div>
+{% endfor %}
+
+<!-- {% for issue in issues %}
+<br>
+    {% for item in issue.items() %}
+<div>{{ item }}</div>
+    {% endfor %}
+<br>
+{% endfor %} -->
+{% endblock %}
