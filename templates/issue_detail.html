@@ -18,6 +18,15 @@ Details for issue #{{ issue.number }}
 
 <div id="issue_body">{{ issue.body }}</div>
 <br> 
+{% for comment in comments %}
+<div id="user_information">
+    {% if comment.user.avatar_url %}<div class="crop"><img class="avatar" src="{{ comment.user.avatar_url }}"/></div>{% endif %}
+    <div class="user_information_item" id="user_login">{{ comment.user.login }}</div>
+    <div class="user_information_item"> wrote on {{ comment.created_at | format_time }}: </div>
+</div>
+
+<div id="issue_body">{{ comment.body }}</div>
+{% endfor %}
 {% if issue.closed_at %}{{ issue.closed_at }}{% endif %}
 
 {% endblock %}
