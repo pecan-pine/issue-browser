@@ -1,30 +1,33 @@
 from flask import Flask, request, Response, redirect, render_template
 import os
 import requests
+from flask_paginate import Pagination, get_page_parameter, get_page_args
 
 app = Flask(__name__)
 
 # auto-reload templates
 app.config["TEMPLATES_AUTO_RELOAD"] = True
 
+r = requests.get("https://api.github.com/repos/walmartlabs/thorax/issues")
+issues = r.json()
+def get_issues(offset=0, per_page=10):
+    return issues[offset: offset + per_page]
+
 @app.route('/', methods=['POST', 'GET'])
 def main_page():
     r = requests.get("https://api.github.com/repos/walmartlabs/thorax/issues")
-    l = r.json()
-    print(type(r.json()))
-    print(r.json())
-    for text in r.json():
-        print(text)
+    issues = r.json()
+    titles = [issue["title"] for issue in issues]
+    page = request.args.get(get_page_parameter(), type=int, default=1)
+    pagination = Pagination(page=page, per_page=10, total=len(issues), record_name="issues", css_framework="bootstrap4")
 
-    if request.method == 'POST':
-        print("Post!")
-        user_agent = request.headers["User-Agent"]
-        if "GitHub-Hookshot" in user_agent.split("/"):
-            commit_message = write_commit_message(request)
-            print(commit_message)
-            update_website(commit_message)
-        return Response(status=200)
-    return render_template("issue_browser.html", issues=r.json())
+    page, per_page, offset = get_page_args(page_parameter='page', per_page_parameter='per_page')
+    total = len(issues)
+
+    pagination_issues = get_issues(offset=offset, per_page=per_page)
+    pagination = Pagination(page=page, per_page=per_page, total=total, css_framework="bootstrap4")
+
+    return render_template("issue_browser.html", issues=pagination_issues, pagination=pagination)
 
 def update_website(commit_message):
     resume_dir = '../resume'

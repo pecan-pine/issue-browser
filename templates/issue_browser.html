@@ -6,10 +6,12 @@ Current Issues
 
 {% block main %}
 Here are the current issues: 
+{{ pagination.info }}
+{{ pagination.links }}
 <br>
 {% for issue in issues %}
 <br>
-<div>{{ issue.title }}</div>
+<div>{{ loop.index + pagination.skip }} <nbsp></nbsp> {{ issue.title }}</div>
 {% endfor %}
 
 <!-- {% for issue in issues %}
