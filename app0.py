@@ -1,10 +1,13 @@
 from flask import Flask, request, Response, redirect, render_template
 from flask_paginate import Pagination, get_page_args
+from flaskext.markdown import Markdown
 import requests
 import issues
 import datetime
 
 app = Flask(__name__)
+
+Markdown(app)
 
 # auto-reload templates
 app.config["TEMPLATES_AUTO_RELOAD"] = True
