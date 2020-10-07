@@ -12,7 +12,9 @@ Details for issue #{{ issue.number }}
 </h2>
 <div id="user_information">
     {% if issue.user.avatar_url %}<div class="crop"><img class="avatar" src="{{ issue.user.avatar_url }}"/></div>{% endif %}
-    <div class="user_information_item" id="user_login">{{ issue.user.login }}</div>
+    <div class="user_information_item" id="user_login">
+        <a href="{{ issue.user.html_url }}">{{ issue.user.login }}</a>
+    </div>
     <div class="user_information_item"> wrote on {{ issue.created_at | format_time }}: </div>
 </div>
 
